@@ -22,31 +22,34 @@ class SettingsScreen extends React.Component {
     }
   }
   componentDidMount(){
-    const { inputList } = this.props;    
-    // we get the list of Inputs as a Array of Object, 
-    // each object contains properties related to the drinks and bac, time 
-    // creating a new Array of Object with bac and date properties.    
-    const il = inputList.map((v,i) => {
-      return { 'bac': parseFloat(v.inBacPer), 'date':moment(v.timeTicks).format("DD")}
-    })
-    // Grouping the array of object by date to show in the bar charts
-    const gIL = groupBy(il, function(r){      
-      return parseInt(r.date);
-    })    
-    // getting Array of Keys from the grouped 
-    const keys = Object.keys(gIL);
+    const { inputList } = this.props;  
+    let bacPerList = [],   keys = [];
+    if(inputList){
+        // we get the list of Inputs as a Array of Object, 
+        // each object contains properties related to the drinks and bac, time 
+        // creating a new Array of Object with bac and date properties.    
+        const il = inputList.map((v,i) => {
+          return { 'bac': parseFloat(v.inBacPer), 'date':moment(v.timeTicks).format("DD")}
+        })
+        // Grouping the array of object by date to show in the bar charts
+        const gIL = groupBy(il, function(r){      
+          return parseInt(r.date);
+        })    
+        // getting Array of Keys from the grouped 
+        keys = Object.keys(gIL);
 
-    // Creating the BAC list to use in BarCharts.     
-    const bacPerList = keys.reduce((p,v,i)=>{
-      let bclst = gIL[keys[i]].map(v => v.bac);
-      let sumBCLst = sum(bclst);
-      let sB = parseInt(sumBCLst * 100)
-      p.push(sB);
-      //p.push({'value': sB, 'label': v})
-      return p;
-    }, [])
+            // Creating the BAC list to use in BarCharts.     
+            bacPerList = keys.reduce((p,v,i)=>{
+              let bclst = gIL[keys[i]].map(v => v.bac);
+              let sumBCLst = sum(bclst);
+              let sB = parseInt(sumBCLst * 100)
+              p.push(sB);
+              //p.push({'value': sB, 'label': v})
+              return p;
+            }, [])
+        }
     //const lst = gIL[keys[0]].map(v => v.bac);    
-    this.setState({ bacList : bacPerList, keysList:keys });
+    this.setState({ bacList : (bacPerList ? bacPerList : []), keysList:(keys ? keys : []) });
   }
   static getDerivedStateFromProps(nextProps, state){
     return null;
