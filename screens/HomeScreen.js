@@ -4,17 +4,16 @@
 
 */
 import React from 'react';
-import { Image, Platform, ScrollView, StyleSheet, View, Text } from 'react-native';
-import { ProgressBar, Colors, Button, Card , Title, Paragraph} from 'react-native-paper';
+import { Image, Platform, ScrollView, TouchableOpacity, Button as RNButton,  StyleSheet, View, Text } from 'react-native';
+import { ProgressBar, Colors, Button, Card, Title, Paragraph} from 'react-native-paper';
 import { connect} from 'react-redux';
 import { clearBAC, updatedBAC } from '../redux/actions';
 import moment from 'moment';
-
+import {Ionicons} from '@expo/vector-icons';
 const inpObj = {"alcohol":'', "drink":'', "serving":'', "numOfSrvngs":0, "time":0,"timeTicks":0, "updtdTmeTicks":0, "location":'', "bacPer":0,"hBlwLmtTicks":0,"hZeroPerTicks":0, "inBacPer":0,"inHBlwLmtTicks":0,"inHZeroPerTicks":0};               
 
 
 class HomeScreen extends React.Component {
-
  constructor(props){
     super(props);
     moment.locale('en');
@@ -152,19 +151,15 @@ _onComLoad = () =>{
 }
 }
 
-/*
-        <View style={styles.pView}>
-            <Paragraph><Text>updatedAt:{tT}</Text></Paragraph>
-          </View>
-*/ 
-HomeScreen.navigationOptions = {  
-  title: 'Home',
-};
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  headerRght:{
+    marginRight:20
   },
   pView:{
     width:'100%', 
@@ -217,7 +212,20 @@ const styles = StyleSheet.create({
   }
 });
 
-
+HomeScreen.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    headerTitle: 'Home',
+    headerRight: (
+      <TouchableOpacity onPress={() => navigation.navigate('Login', { logOut : true })}>
+      <Ionicons
+      name={'ios-log-out'}
+      size={26}   
+      style={{ marginRight: 15 }}     
+      />
+    </TouchableOpacity>)        
+  }
+}
 const mapStateToProps = (state) =>{
   return{    
     error:state.login.error,

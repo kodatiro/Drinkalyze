@@ -11,6 +11,7 @@ import {connect} from 'react-redux';
 import customStyles from '../styles';
 import * as LocalAuthentication from 'expo-local-authentication';
 import * as SecureStore from 'expo-secure-store';
+import {logout} from '../redux/actions/index'
 
 class AuthScreen extends React.Component {
     state = {
@@ -94,8 +95,12 @@ class AuthScreen extends React.Component {
     
     // This is called on the Component Launch
     componentDidMount(){
-        //this._testhardwareAsync();
-        this.getRemembereduser();
+        const item  = this.props.navigation.getParam('logOut');        
+        if(item){           
+           this.props.dispatch(logout())
+        } else {
+            this.getRemembereduser();
+        }
     }
     // below function is used for toggle button, we are not using it currently.
     // we can have a toggle button to remember me. currently we are savin the credentials for every login.

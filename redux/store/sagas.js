@@ -11,26 +11,7 @@ function* fetchLoginUser(action) {
     var result = {"login":true} 
     yield put({ type: Types.LOGIN_USER_SERVER_RESPONSE_SUCCESS, result });
 
-/*
-    console.log("Action->" + JSON.stringify(action));
-    let formBody = {};
-    formBody.firstname = "asdfg";//action.code;
-    formBody.lastname = "zxcvbb"; //action.provider;
-    formBody.age = "34"
-    //const reqMethod = "POST";
-    const reqMethod = "GET";
-    const loginUrl = baseUrl + '/user/1';
-    const response = yield call(GetDataFromServer, loginUrl, '', '');
 
-    const result = yield response.json();
-    console.log("ADS" + result.workingdetails);
-    console.log("Result ->" + JSON.stringify(result))
-    console.log('Result Json' + result);
-    if (result.error) {
-      yield put({ type: "LOGIN_USER_SERVER_REPONSE_ERROR", error: result.error });
-    } else {
-      yield put({ type: Types.LOGIN_USER_SERVER_RESPONSE_SUCCESS, result });
-    }*/
   } catch (error) {
     // yield put({ type: Types.SERVER_CALL_FAILED, error: error.message });
     console.log(error);
@@ -39,6 +20,9 @@ function* fetchLoginUser(action) {
 const loginUserServiceCall = (email, password) => {  
   return auth.signInWithEmailAndPassword(email, password);
 };
+const LogoutUserServiceCall = () => {
+  return auth.signOut();
+}
 
 function* loginAsync(action) {  
   try{      
@@ -146,7 +130,6 @@ function* updateUserObject(action){
   yield put({ type: Types.ADD_DRINKS_SERVER_RESPONSE_SUCCESS, drinks:action.drinks });
   // return tasksDb.on('value', function(snapshot){
   //   //snapshot would have list of NODES that satisfies the condition
-  //   console.log(snapshot.val());
   //   snapshot.ref.update(action.task);
   // });
 }
@@ -171,7 +154,7 @@ function* updateInputUserObject(action){
   
   // return tasksDb.on('value', function(snapshot){
   //   //snapshot would have list of NODES that satisfies the condition
-  //   console.log(snapshot.val());
+
   //   snapshot.ref.update(action.task);
   // });
 }
@@ -179,7 +162,7 @@ function* updateInputUserObject(action){
 export default function* rootSaga(params) {
     yield takeLatest(Types.LOGIN_USER, loginAsync);    
     yield takeLatest(Types.SIGN_UP, signUpAsync);    
-    yield takeLatest(Types.LOGOUT, logoutAsync);     
+    //yield takeLatest(Types.LOGOUT, logoutAsync);     
     yield takeLatest(Types.FORGOT_PASSWORD, forgotPasswordAsync);  
     yield fork(createNewUserItemSaga);
     yield takeLatest(Types.GET_USER, getLoggedInUserDetails);

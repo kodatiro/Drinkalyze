@@ -64,8 +64,7 @@ class SettingsScreen extends React.Component {
                     data={ keysList }
                     scale={scale.scaleBand}
                     formatLabel={ (value, index) => { 
-                      console.log(value);
-                      console.log(keysList[value]);
+    
                       return keysList[value]
                     } }
                     labelStyle={ { color: 'black', marginLeft : 1 } }
@@ -135,8 +134,7 @@ export default connect(mapStateToProps)(SettingsScreen);
                     data={ keysList }
                     scale={scale.scaleBand}
                     formatLabel={ (value, index) => { 
-                      console.log(value);
-                      console.log(keysList[value]);
+                      
                       return keysList[value]
                     } }
                     labelStyle={ { color: 'black', marginLeft : 1 } }

@@ -117,6 +117,28 @@ const initialUserObj = {
           return { ...state, addDrinkSucess:false };
       case Types.GET_USER_SERVER_RESPONSE_SUCCESS:
           return handleGetUserDetailsSuccess(state, action);
+      case Types.LOGOUT:
+            return { ...state, "pending": false,
+            "showLoading":false,    
+            "loggedInUser": {},
+            "loginStatus": false,    
+            "loggedIn": false,
+            "signUpStatus":false,
+            "error": '',
+            "isValidToken": false, "userObject" : {
+              "name":"", 
+              "height":"", 
+              "weight":"", 
+              "gender":"", 
+              "dob":"",
+              "email":"",
+              "password":"",
+              "inputDetailsList":[inpObj], 
+              "drinksList":[dnkObj],      
+              "input" : inpObj,
+              "addDrink" : dnkObj
+            } 
+          };
       case Types.REGISTER_USER:
         return { ...state, "pending": false,
         "showLoading":false,    

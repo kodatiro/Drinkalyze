@@ -26,8 +26,7 @@ const HomeStack = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-  },
-  config
+  }
 );
 
 HomeStack.navigationOptions = {
@@ -44,7 +43,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+//HomeStack.path = '';
 
 const DrinksStack = createStackNavigator(
   {
@@ -63,7 +62,7 @@ DrinksStack.navigationOptions = {
   ),
 };
 
-DrinksStack.path = '';
+//DrinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -96,7 +95,7 @@ HistoryStack.navigationOptions = {
   ),
 };
 
-HistoryStack.path = '';
+//HistoryStack.path = '';
 
 
 const InputStack = createStackNavigator(
@@ -113,7 +112,7 @@ InputStack.navigationOptions = {
   ),
 };
 
-InputStack.path = '';
+//InputStack.path = '';
 
 
 const tabNavigator = createBottomTabNavigator({
