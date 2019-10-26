@@ -162,7 +162,7 @@ function* updateInputUserObject(action){
 export default function* rootSaga(params) {
     yield takeLatest(Types.LOGIN_USER, loginAsync);    
     yield takeLatest(Types.SIGN_UP, signUpAsync);    
-    //yield takeLatest(Types.LOGOUT, logoutAsync);     
+    yield takeLatest(Types.LOGOUT, logoutAsync);     
     yield takeLatest(Types.FORGOT_PASSWORD, forgotPasswordAsync);  
     yield fork(createNewUserItemSaga);
     yield takeLatest(Types.GET_USER, getLoggedInUserDetails);

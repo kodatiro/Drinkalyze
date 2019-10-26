@@ -88,7 +88,8 @@ import customStyles from '../styles';
             userObject.addDrink = drink;
             userObject.drinksList = userObject.drinksList ? userObject.drinksList : [];
             userObject.drinksList.push(drink);
-            this.props.dispatch(addDrinks(userObject, drink, email));            
+            this.props.dispatch(addDrinks(userObject, drink, email));
+            this.setState({nameDrink:'', alcohol:'', brand:'', alcoholPer:'', quantity:''})            
         }            
     };
     //When the Select Alcohol Drop downis cahnged this method is called.
