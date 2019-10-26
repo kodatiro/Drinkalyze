@@ -1,0 +1,113 @@
+{
+  "Alcohol_Categories": {
+    "Whiskey":"0",
+    "Scotch":"1",
+    "Beer":"2"
+  }
+}
+
+{
+  "Alcohol_Names": [
+    {
+      "name": "Beer1",
+      "Alochol_%": 15,
+      "Alcohol_category": 2
+    },
+    {
+      "name": "Scotch1",
+      "Alochol_%": 20,
+      "Alcohol_category": 1
+    },
+    {
+      "name": "Whiskey1",
+      "Alochol_%": 17,
+      "Alcohol_category": 0
+    }]
+}
+
+{
+  "Serving_Type": [
+    {
+      "name": "Bottle",
+      "Amount": 350,
+      "Alcohol_category": 2
+    },
+    {
+      "name": "Small glass",
+      "Amount": 30,
+      "Alcohol_category": [0, 1]
+    },
+    {
+      "name": "Big Glass",
+      "Amount%": 60,
+      "Alcohol_category": [0, 1]
+    }]
+}
+
+{
+  "Location": [
+    {
+      "Zipcode": 76549,
+      "Limit": 0.16
+
+    },
+    {
+      "Zipcode": 48168,
+      "Limit": 0.2
+    },
+    {
+      "Zipcode": 86545,
+      "Limit": 0.22
+    }]
+}
+
+{
+  "User_Info": [
+    {
+      "name": "John Doe",
+      "Age": 25,
+      "Height": 67
+      "Weight": 145
+      "Gender": "Male"
+    },
+    {
+      "name": "Jane Doe",
+      "Age": 28,
+      "Height": 63
+      "Weight": 10
+      "Gender": "Female"
+    },
+    {
+      "name": "Johnson Doe",
+      "Age": 38,
+      "Height": 74
+      "Weight": 212
+      "Gender": "Male"
+    }]
+}
+
+{
+  "Input": [
+    {
+      "User_Id": 0,
+      "Time": "6:50",
+      "Date": "12/5"
+      "Location": 56748
+      "Drink Category": 2
+      "Drink_Name": 0
+      "Serving_Type": 0
+      "Number of Servings": 3
+    },
+    {
+      "User_Id": 2,
+      "Time": "3:15",
+      "Date": "12/7"
+      "Location": 48168
+      "Drink Category": 1
+      "Drink_Name": 1
+      "Serving_Type": 2
+      "Number of Servings": 2
+    },
+    {]
+}
+
