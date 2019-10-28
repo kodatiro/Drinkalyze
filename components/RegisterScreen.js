@@ -31,6 +31,8 @@ const ErrorValidationLabel = ({ txtLbl }) => (
             errorText : '', 
             date: new Date(),
             dateSel:'', 
+            dateError:'Age limit 21 years or older',
+            dateErrorType:'info',
             isIOS: Platform.OS === 'ios' ? true : false
         }
     }
@@ -61,17 +63,23 @@ const ErrorValidationLabel = ({ txtLbl }) => (
     };
     openDatePicker = async () =>{
         try {
-          const {action, year, month, day} = await DatePickerAndroid.open({
+            const curYear = new Date().getFullYear();
+            const {action, year, month, day} = await DatePickerAndroid.open({
             // Use `new Date()` for current date.
             // May 25 2020. Month 0 is January.
             date: new Date()
           });
           if (action !== DatePickerAndroid.dismissedAction) {
             //alert({year,month,day})
-            // Selected year, month (0-11), day
-            const d = new Date(year+"-"+(parseInt(month) + 1)+"-"+day);
-            const dtme = moment().format("MM-DD-YYYY")  
-            this.setState({ date:d, dateSel: dtme });            
+            // Selected year, month (0-11), day            
+            if(parseInt(curYear) - parseInt(year) >= 21){            
+                const d = new Date(year+"-"+(parseInt(month) + 1)+"-"+day);
+                const dtme = moment(d).format("MM-DD-YYYY")  
+                this.setState({ date:d, dateSel: dtme });   
+            } else{
+                this.setState({ dateErrorType:'error', date:'',
+                dateSel:''});
+            }             
           }
         } catch ({code, message}) {
           console.warn('Cannot open date picker', message);
@@ -81,14 +89,20 @@ const ErrorValidationLabel = ({ txtLbl }) => (
     _hideDialog = () => this.setState({ visible: false });
     
     _onDateChanged = (d) =>{        
-        const dtme = moment(d).format("MM-DD-YYYY")  
-        this.setState({ date:d, dateSel: dtme });
+        const dtme = moment(d).format("MM-DD-YYYY");
+        const curYear = new Date().getFullYear();
+        const year =  moment(d).format("YYYY"); 
+        if(parseInt(curYear) - parseInt(year) >= 21){    
+            this.setState({ date:d, dateSel: dtme });
+        } else{
+            this.setState({ dateErrorType:'error', date:'',
+            dateSel:''});
+        }
     }
     onSubmitPressed =() =>{        
         
         const { name, height, weight, gender, dateSel } = this.state;
         if(this._isValid()){
-            // 
             this.props.navigation.navigate('Signup');
             this.props.dispatch(registerUser({ name, height, weight, gender, dob:dateSel }));
             
@@ -96,8 +110,7 @@ const ErrorValidationLabel = ({ txtLbl }) => (
     }
     render(){
         const { genderDD } = this.props;
-        const { isValid, errorText, dateSel,  gender, isIOS  } = this.state;
-        const renderValidationError = isValid ? "" : <ErrorValidationLabel txtLbl={errorText} />;
+        const { isValid, errorText, dateSel,  gender, isIOS, dateErrorType, dateError } = this.state;
         return(<View style={styles.container}>
             <ScrollView  style={styles.container}>            
             <View style={styles.viewItem}>   
@@ -158,6 +171,9 @@ const ErrorValidationLabel = ({ txtLbl }) => (
                                     </Dialog>
                                 </Portal>
                     </View>        
+                    <HelperText type={dateErrorType}>
+                                    {dateError}
+                                </HelperText>
                     <HelperText type="error" visible={!isValid}>
                         {errorText}
                 </HelperText>                       
