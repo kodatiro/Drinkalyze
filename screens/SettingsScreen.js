@@ -55,26 +55,7 @@ class SettingsScreen extends React.Component {
     return null;
   }
 
-  /*
-   <BarChart style={{ height: 200 }}
-                data={ bacList }
-                svg={{ fill }}
-                contentInset={{ top: 30, bottom: 30 }}>
-                <Grid/>
-            </BarChart>        
-            <XAxis
-                    style={{ marginTop: 10, marginLeft : 20 }}
-                    data={ keysList }
-                    scale={scale.scaleBand}
-                    formatLabel={ (value, index) => { 
-    
-                      return keysList[value]
-                    } }
-                    labelStyle={ { color: 'black', marginLeft : 1 } }
-                />  
-  flex: 1, marginLeft: 8 
   
-  */
   render(){
     const fill = 'rgb(134,65,244)';
     const { bacList, keysList } = this.state;    
@@ -93,9 +74,9 @@ class SettingsScreen extends React.Component {
                 />
                 <XAxis
                     style={{ marginTop: 10 , marginLeft :20 }}
-                    data={ keysList }
+                    data={ bacList }
                     scale={scale.scaleBand}
-                    formatLabel={ (value, index) => keysList[value] }
+                    formatLabel={ (value, index) => bacList[value] }
                     labelStyle={ { color: 'red', marginRight:50, align:'center' } }
                 />
           
@@ -124,78 +105,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps)(SettingsScreen);
 
 
-/*
-
- <BarChart style={{ height: 200 }}
-                data={ bacList }
-                svg={{ fill }}
-                contentInset={{ top: 30, bottom: 30 }}>
-                <Grid/>
-            </BarChart>        
-            <XAxis
-                    style={{ marginTop: 10, marginLeft : 20 }}
-                    data={ keysList }
-                    scale={scale.scaleBand}
-                    formatLabel={ (value, index) => { 
-                      
-                      return keysList[value]
-                    } }
-                    labelStyle={ { color: 'black', marginLeft : 1 } }
-                />  
-
-          <BarChart style={{ height: 200 }}
-                data={ bacList }
-                svg={{ fill }}
-                contentInset={{ top: 30, bottom: 30 }}>
-                <Grid/>
-            </BarChart>        
-            <XAxis
-                    style={{ marginTop: 10, marginLeft : 20 }}
-                    data={ keysList }
-                    scale={scale.scaleBand}
-                    formatLabel={ (value, index) => { return value} }
-                    labelStyle={ { color: 'black' } }
-                />
-
-
-                <YAxis
-                    data={bacList}
-                    yAccessor={({ index }) => index}
-                    scale={scale.scaleBand}
-                    contentInset={{ top: 10, bottom: 10 }}
-                    spacing={0.2}
-                    formatLabel={(_, index) => bacList[ index ].label}
-                />
-                  <BarChart
-                    style={{ flex: 1, marginLeft: 8 }}
-                    data={bacList}
-                    horizontal={true}
-                    yAccessor={({ item }) => item.value}
-                    svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
-                    contentInset={{ top: 10, bottom: 10 }}
-                    spacing={0.2}
-                    gridMin={0}
-                >
-                    <Grid direction={Grid.Direction.VERTICAL}/>
-                </BarChart>
-
-                 <BarChart
-                    style={{ flex: 1, marginLeft: 8 }}
-                    data={bacList}
-                    horizontal={true}
-                    xAccessor={({ item }) => item.value}
-                    svg={{ fill: 'rgba(134, 65, 244, 0.8)' }}
-                    contentInset={{ top: 10, bottom: 10 }}
-                    spacing={0.2}
-                    gridMin={0}
-                >
-                    <Grid direction={Grid.Direction.HORIZONTAL}/>
-                </BarChart>     
-            <XAxis
-                    style={{ marginTop: 10, marginLeft : 20 }}
-                    data={ bacList }
-                    scale={scale.scaleBand}
-                    formatLabel={ (value, index) => { console.log(value + " - value"); return bacList[ index ].label} }
-                    labelStyle={ { color: 'black' } }
-                />
-*/
