@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Drinkalyze",
-    "slug": "enk",
+    "slug": "drinkalyze",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -30,6 +30,6 @@
     "android": {
       "package": "com.kodati.drinkalyze"
     },
-    "description": ""
+    "description": "Drinkalyze is an app meant to help solve the ever-growing drinking and driving (DUI) problem. The user simply needs to input the drink that they took, and how much of it they consumed. The home screen will then show their Blood Alcohol Concentration and the estimated time they have to wait until they have to drive. Users can also check their history of what they drank and when, as well as look at statistics of how much they are drinking every day."
   }
 }
