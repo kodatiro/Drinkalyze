@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBjXyvggW7WDdvWQSP9Mo8W0D7P17lMV_0",
+    apiKey: ,
     authDomain: "drinkalyze.firebaseapp.com",
     databaseURL: "https://drinkalyze.firebaseio.com",
     projectId: "drinkalyze",
