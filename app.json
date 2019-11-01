@@ -30,6 +30,6 @@
     "android": {
       "package": "com.kodati.drinkalyze"
     },
-    "description": "Drinkalyze is an app meant to help solve the ever-growing drinking and driving (DUI) problem. Drinkalyze allows users to see how much time they have to wait until they can legally drive as well as analyze their drinking patterns. The user simply needs to input what they drank and how much of it they consumed to view their Blood Alcohol Concentration and their wait time. Users can view what they drank and when they drank it through the History page. If a drink the user wants to input is not in the app, they can go to the Add Drink page. Future updates we hope to include are Drinkalyze friend groups and emergency contacts. To test the app you must use an android phone with expo installed to scan the barcode."
+    "description": "Drinkalyze is an app meant to help solve the ever-growing drinking and driving (DUI) problem. Drinkalyze calculates a user’s Blood Alcohol Concentration and offers a suggested wait time before the user can legally drive. Added features include a history and statistics page to analyze the user’s drinking habits. To test the app you must use an android phone with expo installed to scan the barcode."
   }
 }
